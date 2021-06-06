@@ -17,18 +17,18 @@ lib20/libtestld.dylib : lib.c
 	$(CC) -DVERSION='"2.0"' -fPIC -dynamiclib -install_name libtestld.2.dylib -current_version 2.0.0 -compatibility_version 2.0.0 -o $@ $?
 
 u10 : use.c lib10/libtestld.so
-	$(CC) -Llib10 -ltestld -o $@ use.c
+	$(CC) -Llib10 -o $@ use.c -ltestld
 u11 : use.c lib11/libtestld.so
-	$(CC) -Llib11 -ltestld -o $@ use.c
+	$(CC) -Llib11 -o $@ use.c -ltestld
 u20 : use.c lib20/libtestld.so
-	$(CC) -Llib20 -ltestld -o $@ use.c
+	$(CC) -Llib20 -o $@ use.c -ltestld
 
 m10 : use.c lib10/libtestld.dylib
-	$(CC) -Llib10 -ltestld -o $@ use.c
+	$(CC) -Llib10 -o $@ use.c -ltestld
 m11 : use.c lib11/libtestld.dylib
-	$(CC) -Llib11 -ltestld -o $@ use.c
+	$(CC) -Llib11 -o $@ use.c -ltestld
 m20 : use.c lib20/libtestld.dylib
-	$(CC) -Llib20 -ltestld -o $@ use.c
+	$(CC) -Llib20 -o $@ use.c -ltestld
 
 install-unix :
 	cp lib10/libtestld.so /usr/local/lib/libtestld.so.1.0
