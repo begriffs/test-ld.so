@@ -10,11 +10,11 @@ lib20/libtestld.so : lib.c
 	$(CC) -DVERSION='"2.0"' -shared -fPIC -Wl,-soname,libtestld.so.2.0 -o $@ $?
 
 lib10/libtestld.dylib : lib.c
-	$(CC) -DVERSION='"1.0"' -fPIC -dynamiclib -install_name libtestld.1.0.dylib -current_version 1.0.0 -compatibility_version 1.0.0 -o $@ $?
+	$(CC) -DVERSION='"1.0"' -fPIC -dynamiclib -install_name libtestld.1.dylib -current_version 1.0.0 -compatibility_version 1.0.0 -o $@ $?
 lib11/libtestld.dylib : lib.c
-	$(CC) -DVERSION='"1.1"' -fPIC -dynamiclib -install_name libtestld.1.1.dylib -current_version 1.1.0 -compatibility_version 1.0.0 -o $@ $?
+	$(CC) -DVERSION='"1.1"' -fPIC -dynamiclib -install_name libtestld.1.dylib -current_version 1.1.0 -compatibility_version 1.1.0 -o $@ $?
 lib20/libtestld.dylib : lib.c
-	$(CC) -DVERSION='"2.0"' -fPIC -dynamiclib -install_name libtestld.2.0.dylib -current_version 2.0.0 -compatibility_version 2.0.0 -o $@ $?
+	$(CC) -DVERSION='"2.0"' -fPIC -dynamiclib -install_name libtestld.2.dylib -current_version 2.0.0 -compatibility_version 2.0.0 -o $@ $?
 
 u10 : use.c lib10/libtestld.so
 	$(CC) -Llib10 -ltestld -o $@ use.c
@@ -36,9 +36,8 @@ install-unix :
 	cp lib20/libtestld.so /usr/local/lib/libtestld.so.2.0
 
 install-mac :
-	cp lib10/libtestld.dylib /usr/local/lib/libtestld.1.0.dylib
-	cp lib11/libtestld.dylib /usr/local/lib/libtestld.1.1.dylib
-	cp lib20/libtestld.dylib /usr/local/lib/libtestld.2.0.dylib
+	cp lib10/libtestld.dylib /usr/local/lib/libtestld.1.dylib
+	cp lib20/libtestld.dylib /usr/local/lib/libtestld.2.dylib
 
 clean :
 	rm -f lib??/*
