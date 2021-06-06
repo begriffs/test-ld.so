@@ -1,11 +1,11 @@
 lib10/libtestld.so : lib.c
-	$(CC) -DVERSION="1.0" -shared -fPIC -soname "libtestld.so.1.0" -o $@ $*
+	$(CC) -DVERSION="1.0" -shared -fPIC -Wl,-soname,libtestld.so.1.0 -o $@ $*
 
 lib11/libtestld.so : lib.c
-	$(CC) -DVERSION="1.1" -shared -fPIC -soname "libtestld.so.1.1" -o $@ $*
+	$(CC) -DVERSION="1.1" -shared -fPIC -Wl,-soname,libtestld.so.1.1 -o $@ $*
 
 lib20/libtestld.so : lib.c
-	$(CC) -DVERSION="2.0" -shared -fPIC -soname "libtestld.so.2.0" -o $@ $*
+	$(CC) -DVERSION="2.0" -shared -fPIC -Wl,-soname,libtestld.so.2.0 -o $@ $*
 
 use10 : use.c lib10/libtestld.so
 	$(CC) -Llib10 -ltestld -o $@ use.c
