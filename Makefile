@@ -41,7 +41,7 @@ j : use.c jumble/libtestld.so.1.0 jumble/libtestld.so.1.1 jumble/libtestld.so.2.
 	$(CC) -Ljumble -o $@ use.c -ltestld
 
 j10 : use.c jumble/libtestld.so.1.0 jumble/libtestld.so.1.1 jumble/libtestld.so.2.0
-	$(CC) -Ljumble -o $@ use.c -l:jumble/libtestld.so.1.0
+	$(CC) -Ljumble -o $@ use.c -l:libtestld.so.1.0
 
 install-unix :
 	cp lib10/libtestld.so /usr/local/lib/libtestld.so.1.0
