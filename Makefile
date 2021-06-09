@@ -9,6 +9,13 @@ lib11/libtestld.so : lib.c
 lib20/libtestld.so : lib.c
 	$(CC) -DVERSION='"2.0"' -shared -fPIC -Wl,-soname,libtestld.so.2.0 -o $@ $?
 
+jumble/libtestld.so.1.0 : lib10/libtestld.so
+	cp -f $? $@
+jumble/libtestld.so.1.1 : lib11/libtestld.so
+	cp -f $? $@
+jumble/libtestld.so.2.0 : lib20/libtestld.so
+	cp -f $? $@
+
 lib10/libtestld.dylib : lib.c
 	$(CC) -DVERSION='"1.0"' -fPIC -dynamiclib -install_name libtestld.1.dylib -current_version 1.0.0 -compatibility_version 1.0.0 -o $@ $?
 lib11/libtestld.dylib : lib.c
@@ -29,6 +36,9 @@ m11 : use.c lib11/libtestld.dylib
 	$(CC) -Llib11 -o $@ use.c -ltestld
 m20 : use.c lib20/libtestld.dylib
 	$(CC) -Llib20 -o $@ use.c -ltestld
+
+j : use.c jumble/libtestld.so.1.0
+	$(CC) -Ljumble -o $@ use.c -ltestld
 
 install-unix :
 	cp lib10/libtestld.so /usr/local/lib/libtestld.so.1.0
