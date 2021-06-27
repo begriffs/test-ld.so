@@ -1,6 +1,6 @@
-unix : u10 u11 u20
+unix : u u10 u11 u20
 
-mac : m10 m11 m20
+mac : m m10 m11 m20
 
 lib/libtestld.so : lib.c
 	$(CC) -DVERSION='"1.0"' -shared -fPIC -o $@ $?
