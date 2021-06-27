@@ -21,7 +21,7 @@ jumble/libtestld.so.2.0 : lib20/libtestld.so
 lib/libtestld.dylib : lib.c
 	$(CC) -DVERSION='"1.0"' -fPIC -Wl,-dylib -o $@ $?
 lib10/libtestld.dylib : lib.c
-	$(CC) -DVERSION='"1.0"' -fPIC -dynamiclib -install_name libtestld.1.dylib -current_version 1.0.0 -compatibility_version 1.0.0 -o $@ $?
+	$(CC) -DVERSION='"1.0"' -fPIC -Wl,-dylib -Wl,-install_name,libtestld.1.dylib -Wl,-current_version,1.0.0 -Wl,-compatibility_version,1.0.0 -o $@ $?
 lib11/libtestld.dylib : lib.c
 	$(CC) -DVERSION='"1.1"' -fPIC -dynamiclib -install_name libtestld.1.dylib -current_version 1.1.0 -compatibility_version 1.1.0 -o $@ $?
 lib20/libtestld.dylib : lib.c
